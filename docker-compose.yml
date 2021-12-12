@@ -1,0 +1,28 @@
+version: "3"
+services:
+    blockchain:
+        container_name: blockchain
+        build:
+            context: ./docker/blockchain
+                # volumes
+        volumes:
+            - "./blockchain:/usr/src/workspace:delegated"
+        # command: >
+        #     bash
+        ports:
+            - 8545:8545
+        stdin_open: true # docker run -i
+        tty: true # docker run -t
+    webclient:
+        container_name: webclient
+        build:
+            context: ./docker/webclient
+                # volumes
+        volumes:
+            - "./webclient:/usr/src/workspace:delegated"
+        # command: >
+        #     bash
+        ports:
+            - 3000:3000
+        stdin_open: true # docker run -i
+        tty: true # docker run -t
